@@ -1,29 +1,48 @@
 import React, { useEffect, useState, useContext} from 'react'
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import { Container } from '@material-ui/core';
-import Card from '../components/Card';
+import NoteCard from '../components/note-card';
+import Masonry from 'react-masonry-css'
 
 export default function Notes() {
-
   const [notes, setNotes] = useState([])
 
-  useEffect(() => {
+  const deleteNote = (id) => {
+    localStorage.removeItem(id)
+    setNotes(notes.filter(e => e.id !== id))
+  }
+
+  const getNotes = () => {
+    let array = []
     for(let note in localStorage) {
-      localStorage.hasOwnProperty(note) && setNotes(prev => [...prev, JSON.parse(localStorage.getItem(note))])
+      if (localStorage.hasOwnProperty(note)) {
+        array = [...array, JSON.parse(localStorage.getItem(note))]
+      }
     }
+    setNotes(array)
+  }
+  useEffect(() => {
+    getNotes()
   }, [])
+
+  const breakpoints = {
+    default: 4,
+    1100: 3,
+    850: 2,
+    680: 1
+  };
 
   return (
     <Container>
-      <Grid container>
-      {notes && notes.map(note => 
-        <Grid item xs={12} sm={6} md={3} >
-          <Card note={note}/>
-        </Grid>
-      )}
-      </Grid>
-    </Container>
-    
+      <Masonry
+        breakpointCols={breakpoints}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column">
+        {notes && notes.map(note => 
+        <div key={notes.id}>
+          <NoteCard note={note} deleteNote={deleteNote}/>
+        </div>
+        )}
+      </Masonry>
+    </Container> 
   )
 }

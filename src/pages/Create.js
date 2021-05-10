@@ -9,6 +9,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { DataContext } from '../data-context'
+import { useHistory } from 'react-router';
 
 
 const useStyles = makeStyles({
@@ -26,6 +27,7 @@ export default function Create() {
   const [otherRadio, setOtherRadio] = useState("")
   const classes = useStyles()
   const {saveNote} = useContext(DataContext)
+  const history = useHistory()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -36,6 +38,7 @@ export default function Create() {
       note,
       category: radioSelected
     })
+    history.push('/')
   }
   return (
     <Container>
@@ -92,9 +95,6 @@ export default function Create() {
         >
           Add note
         </Button>
-        <p>{title}</p>
-        <p>{note}</p>
-        <p>{radioSelected}</p>
       </form>
       
     </Container>
