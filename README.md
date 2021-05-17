@@ -1,5 +1,5 @@
 # MyNotes
-A simple not taking app.
+A simple not taking web app.
 + notes are stored in localStorage
 + Material UI was used in design
 + React Router
