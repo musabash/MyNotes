@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "mynotescc71ce3f_identitypool_cc71ce3f",
+    "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "mynotecc71ce3f",
-    "userPoolName": "mynotescc71ce3f_userpool_cc71ce3f",
+    "resourceNameTruncated": "mynote2b47dff9",
+    "userPoolName": "MyNotes",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -16,24 +16,22 @@
     "emailVerificationMessage": "Your verification code is {####}",
     "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
-    "passwordPolicyCharacters": [],
+    "passwordPolicyCharacters": [
+        "Requires Lowercase",
+        "Requires Numbers",
+        "Requires Uppercase"
+    ],
     "requiredAttributes": [
-        "email",
-        "family_name",
-        "name"
+        "email"
     ],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
-    "userpoolClientWriteAttributes": [
-        "email"
-    ],
-    "userpoolClientReadAttributes": [
-        "email"
-    ],
-    "userpoolClientLambdaRole": "mynotecc71ce3f_userpoolclient_lambda_role",
+    "userpoolClientWriteAttributes": [],
+    "userpoolClientReadAttributes": [],
+    "userpoolClientLambdaRole": "MyNote2b47dff9_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "cc71ce3f",
-    "resourceName": "mynotescc71ce3f",
+    "sharedId": "2b47dff9",
+    "resourceName": "MyNotes",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -47,18 +45,16 @@
             "Arn"
         ]
     },
-    "useDefault": "default",
+    "serviceName": "Cognito",
     "usernameAttributes": [
         "email"
     ],
-    "triggers": "{}",
+    "useDefault": "manual",
+    "userPoolGroups": false,
     "userPoolGroupList": [],
-    "serviceName": "Cognito",
+    "adminQueries": false,
+    "thirdPartyAuth": false,
+    "authProviders": [],
     "usernameCaseSensitive": false,
-    "parentStack": {
-        "Ref": "AWS::StackId"
-    },
-    "breakCircularDependency": true,
-    "permissions": [],
     "dependsOn": []
 }

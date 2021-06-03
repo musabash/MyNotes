@@ -1,6 +1,6 @@
 {
   "auth": {
-    "mynotescc71ce3f": {
+    "MyNotes": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
