@@ -10,11 +10,7 @@ function DataContextProvider(props) {
   }
   
 
-  // function deleteList(value) {
-  //   localStorage.removeItem(value)
-  //   setList(prev => prev.filter(elm => elm !== value ))
-  //   localStorage.setItem('listArray', JSON.stringify(list))
-  // }
+ 
 
   // function saveEdit() {
   //   const newData = itemsData.map(elm => {
