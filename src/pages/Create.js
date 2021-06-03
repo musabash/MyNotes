@@ -24,7 +24,6 @@ export default function Create() {
   const [title, setTitle] = useState("")
   const [note, setNote] = useState("")
   const [radioSelected, setRadioSelected] = useState("")
-  const [otherRadio, setOtherRadio] = useState("")
   const classes = useStyles()
   const {saveNote} = useContext(DataContext)
   const history = useHistory()

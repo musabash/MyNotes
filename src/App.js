@@ -4,6 +4,8 @@ import Create from './pages/Create'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core'
 import { blueGrey } from '@material-ui/core/colors'
 import Layout from './components/layout'
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+
 
 const theme = createMuiTheme({
   palette: {
@@ -36,8 +38,9 @@ function App() {
           </Switch>
         </Layout>
       </Router>
+      <AmplifySignOut />
     </ThemeProvider>
   );
 }
 
-export default App;
+export default withAuthenticator(App);
