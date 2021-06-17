@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React from "react"
 
 const DataContext = React.createContext()
 
@@ -10,11 +10,7 @@ function DataContextProvider(props) {
   }
   
 
-  // function deleteList(value) {
-  //   localStorage.removeItem(value)
-  //   setList(prev => prev.filter(elm => elm !== value ))
-  //   localStorage.setItem('listArray', JSON.stringify(list))
-  // }
+ 
 
   // function saveEdit() {
   //   const newData = itemsData.map(elm => {
