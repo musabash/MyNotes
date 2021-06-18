@@ -20,6 +20,7 @@ import { blue, green, red, yellow } from '@material-ui/core/colors';
 
 export default function NoteCard({note, deleteNote}) {
   const classes = useStyles(note)
+  
   return (
     <div>
       <Card elevation={2}>

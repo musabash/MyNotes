@@ -2,14 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { DataContextProvider } from './data-context'
-
 
 ReactDOM.render(
   <React.StrictMode>
-    <DataContextProvider>
-      <App />
-    </DataContextProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 ); 

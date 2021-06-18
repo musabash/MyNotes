@@ -12,11 +12,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { useHistory, useLocation } from 'react-router';
 
 
-const drawerWidth = 240
+const drawerWidth = 200
 
 const useStyles = makeStyles((theme) => {return {
   root: {
-    display: "flex"
+    display: "flex",
+    paddingTop: "1em",
   },
   active: {
     background: "#f4f4f4"
@@ -30,6 +31,9 @@ const useStyles = makeStyles((theme) => {return {
   drawer: {
     width: drawerWidth,
   },
+  title: {
+    padding: "0.5em",
+  },
   drawerPaper: {
     width: drawerWidth,
   },
@@ -37,7 +41,8 @@ const useStyles = makeStyles((theme) => {return {
     flexGrow: 1,
   },
   appbar: {
-    width: `calc(100% - ${drawerWidth}px)`
+    width: `calc(100% - ${drawerWidth}px)`,
+    boxShadow: '0 0 5px 0 gray',
   },
   toolbar: theme.mixins.toolbar,
   avatar: {
@@ -81,7 +86,7 @@ export default function Layout({children}) {
         classes={{paper: classes.drawerPaper}}
       >
         <div>
-          <Typography variant="h4">
+          <Typography className={classes.title} variant="h4">
             My Notes
           </Typography>
         </div>

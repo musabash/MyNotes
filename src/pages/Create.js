@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import {Typography, Button, makeStyles} from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import NoteAddIcon from '@material-ui/icons/NoteAddOutlined';
@@ -8,7 +8,6 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import { DataContext } from '../data-context'
 import { useHistory } from 'react-router';
 
 
@@ -26,19 +25,22 @@ export default function Create() {
   const [radioSelected, setRadioSelected] = useState("")
   const [otherRadio, setOtherRadio] = useState("")
   const classes = useStyles()
-  const {saveNote} = useContext(DataContext)
   const history = useHistory()
+  const [touched, setTouched] = useState({note:false, title:false})
 
   const handleSubmit = (e) => {
     e.preventDefault()
     
-    saveNote({
-      id: title.slice(0, 3) + Date.now(),
-      title,
-      note,
-      category: radioSelected
-    })
-    history.push('/')
+    if (title && note) {
+      let obj = {
+        id: Date.now(),
+        title,
+        note,
+        category: radioSelected
+      }
+      localStorage.setItem(obj.id, JSON.stringify(obj))
+      history.push('/')
+    } 
   }
   return (
     <Container>
@@ -62,6 +64,8 @@ export default function Create() {
           fullWidth
           className={classes.field}
           value={title}
+          onBlur={() => setTouched(prev => ({...prev, title:true}))}
+          error={title === '' && touched.title}
         />
         <TextField
           onChange={(e) => setNote(e.target.value)}
@@ -75,6 +79,8 @@ export default function Create() {
           rows={5}
           className={classes.field}
           value={note}
+          onBlur={() => setTouched(prev => ({...prev, note:true}))}
+          error={note === '' && touched.note}
         />
         <FormControl className={classes.field}>
           <FormLabel color="secondary">Note Category</FormLabel>
