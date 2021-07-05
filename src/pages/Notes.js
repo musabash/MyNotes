@@ -4,7 +4,7 @@ import NoteCard from '../components/note-card';
 import Masonry from 'react-masonry-css'
 
 export default function Notes() {
-  const [notes, setNotes] = useState([])
+  const [notes, setNotes] = useState("")
 
   const deleteNote = (id) => {
     localStorage.removeItem(id)
@@ -15,10 +15,10 @@ export default function Notes() {
     let array = []
     for(let note in localStorage) {
       if (localStorage.hasOwnProperty(note)) {
-        array = [...array, JSON.parse(localStorage.getItem(note))]
+        note.slice(0,4) === "note" && array.push (JSON.parse(localStorage.getItem(note)))
+        setNotes(array)
       }
     }
-    setNotes(array)
   }
   useEffect(() => {
     getNotes()
@@ -37,12 +37,14 @@ export default function Notes() {
         breakpointCols={breakpoints}
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column">
-        {notes && notes.map(note => 
+        {notes.length !== 0 ? notes.map(note => 
         <div key={notes.id}>
           <NoteCard note={note} deleteNote={deleteNote}/>
         </div>
-        )}
+        ) :
+        <div>No notes found.</div>}
+        
       </Masonry>
-    </Container> 
+    </Container>
   )
 }

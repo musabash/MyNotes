@@ -33,7 +33,7 @@ export default function Create() {
     
     if (title && note) {
       let obj = {
-        id: Date.now(),
+        id: "note" + Date.now(),
         title,
         note,
         category: radioSelected
@@ -65,7 +65,7 @@ export default function Create() {
           className={classes.field}
           value={title}
           onBlur={() => setTouched(prev => ({...prev, title:true}))}
-          error={title === '' && touched.title}
+          error={title === '' && touched}
         />
         <TextField
           onChange={(e) => setNote(e.target.value)}
